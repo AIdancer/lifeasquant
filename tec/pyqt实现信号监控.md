@@ -9,3 +9,7 @@ pip install pyinstaller
 设计好UI之后，比如ui名字为monitor.ui
 pyuic5 -o monitor.py monitor.ui
 ```
+
+### 数据源
+ak-share : https://github.com/akfamily/akshare  
+
