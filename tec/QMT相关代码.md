@@ -230,9 +230,12 @@ def f(C):
 	ooo_value = target_total_value / (nstocks * 1.0)
 	for key in target_stocks:
 		if key not in A.final_dict:
-			ooo_price = ticks[key]["lastPrice"]
-			ooo_vol = max(int(ooo_value / ooo_price / 100) * 100, 100)
-			A.final_dict[key] = ooo_vol
+            try:
+    			ooo_price = ticks[key]["lastPrice"]
+    			ooo_vol = max(int(ooo_value / ooo_price / 100) * 100, 100)
+    			A.final_dict[key] = ooo_vol
+            except Exception as e:
+                print("异常 {} {}".format(key, e))
 		else:
 			continue
 	print("nstocks: {}".format(nstocks))
