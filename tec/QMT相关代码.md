@@ -440,11 +440,14 @@ def f(C):
 	print("rate_sum: {:.2f}".format(rate_sum))
 	for key in target_rate:
 		if key not in A.final_dict:
-			ooo_price = ticks[key]["lastPrice"]
-			key_rate = target_rate[key]
-			tvalue = key_rate / rate_sum * target_total_value
-			ooo_vol = max(int(tvalue / ooo_price / 100) * 100, 100)
-			A.final_dict[key] = ooo_vol
+			try:
+				ooo_price = ticks[key]["lastPrice"]
+				key_rate = target_rate[key]
+				tvalue = key_rate / rate_sum * target_total_value
+				ooo_vol = max(int(tvalue / ooo_price / 100) * 100, 100)
+				A.final_dict[key] = ooo_vol
+			except Exception as e:
+				print("异常 {} {}".format(key, e))
 		else:
 			continue
 	print("nstocks: {}".format(nstocks))
@@ -595,5 +598,4 @@ def refresh_waiting_dict(C):
 			del_list.append(stock)
 	for stock in del_list:
 		del A.waiting_dict[stock]
-
 ```
