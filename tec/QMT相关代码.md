@@ -1032,5 +1032,5 @@ def refresh_waiting_dict(C):
 			print(f"投资备注为{A.waiting_dict[stock]}的委托状态为废单 停止等待")
 			del_list.append(stock)
 	for stock in del_list:
-		del A.waiting_dict[stock]
+		del A.waiting_dict[stock] 
 ```
