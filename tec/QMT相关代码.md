@@ -826,7 +826,7 @@ from datetime import timedelta,datetime
 
 # 定义全局控制开关
 buy_flag = True
-sell_flag = False
+sell_flag = True
 
 active_code = []
 
