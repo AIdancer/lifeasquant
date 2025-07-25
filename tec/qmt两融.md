@@ -12,8 +12,8 @@ sell_flag = True
 
 active_code = []
 
-target_rate = {}
-target_total_value = 23000
+target_rate = {"510300.SH":0.5, "510500.SH":0.5}
+target_total_value = 50000
 
 #自定义类 用来保存状态 
 class a(object):
@@ -162,7 +162,10 @@ def f(C):
 					msg = f"{now.strftime('%Y%m%d%H%M%S')}_{stock}_sell_{vol}股"
 					print(msg)
 					#挂单价卖出
-					passorder(24,1101,A.acct,stock,14,-1,vol,'对冲',2,msg,C)
+					#普通账户/担保品卖出
+					#passorder(24,1101,A.acct,stock,14,-1,vol,'对冲',2,msg,C)
+					#卖券还款
+					passorder(26,1101,A.acct,stock,14,-1,vol,'对冲',2,msg,C)
 					A.waiting_dict[stock] = msg
 					A.all_order_ref_dict[msg] = time.time()
 			if buy_flag:
@@ -189,9 +192,9 @@ def f(C):
 					#普通账户挂单买入
 					#passorder(23,1101,A.acct,stock,14,-1,vol,'对冲',2,msg,C)
 					#担保品买入
-					passorder(33,1101,A.acct,stock,14,-1,vol,'对冲',2,msg,C)
+					#passorder(33,1101,A.acct,stock,14,-1,vol,'对冲',2,msg,C)
 					#融资买入
-					#passorder(27,1101,A.acct,stock,14,-1,vol,'对冲',2,msg,C)
+					passorder(27,1101,A.acct,stock,14,-1,vol,'对冲',2,msg,C)
 					A.waiting_dict[stock] = msg
 					A.all_order_ref_dict[msg] = time.time()
 					available_cash -= target_value
